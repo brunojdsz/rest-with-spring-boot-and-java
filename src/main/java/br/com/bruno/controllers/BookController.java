@@ -13,18 +13,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.bruno.services.BookServices;
 import br.com.bruno.services.PersonServices;
 import br.com.bruno.utils.MediaType;
+import br.com.bruno.vo.v1.BookVO;
 import br.com.bruno.vo.v1.PersonVO;
+import br.com.bruno.vo.v2.BookVOV2;
 import br.com.bruno.vo.v2.PersonVOV2;
 
 @RestController
-@RequestMapping("/api/person/v1")
+@RequestMapping("/api/book/v1")
 //@Tag(name = "People", description = "Endpoints for Mapping People")
-public class PersonController {
+public class BookController {
 	
 	@Autowired
-	private PersonServices service;
+	private BookServices service;
 	
 	@GetMapping(produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
 	//@Operation(summary = "Finds all people", description = "Finds all people", 
@@ -43,7 +46,7 @@ public class PersonController {
 		//	@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		//}
 	//);
-	public List<PersonVO> findAll() throws Exception{		
+	public List<BookVO> findAll() throws Exception{		
 		return service.findAll();
 	}
 	
@@ -61,7 +64,7 @@ public class PersonController {
 		//	@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		//}
 	//);
-	public PersonVO findById(@PathVariable(value = "id") Long id) throws Exception{
+	public BookVO findById(@PathVariable(value = "id") Long id) throws Exception{
 		return service.findById(id);
 	}
 	
@@ -77,13 +80,13 @@ public class PersonController {
 		//	@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		//}
 	//);
-	public PersonVO create(@RequestBody PersonVO PersonVO) throws Exception{
-		return service.create(PersonVO);
+	public BookVO create(@RequestBody BookVO bookVO) throws Exception{
+		return service.create(bookVO);
 	}
 	
 	@PostMapping(value = "/v2", produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML}, consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
-	public PersonVOV2 createV2(@RequestBody PersonVOV2 PersonVO) throws Exception{
-		return service.createV2(PersonVO);
+	public BookVOV2 createV2(@RequestBody BookVOV2 bookVO) throws Exception{
+		return service.createV2(bookVO);
 	}
 	
 	@PutMapping(produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML}, consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
@@ -99,8 +102,8 @@ public class PersonController {
 		//	@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		//}
 	//);
-	public PersonVO update(@RequestBody PersonVO PersonVO) throws Exception{
-		return service.update(PersonVO);
+	public BookVO update(@RequestBody BookVO bookVO) throws Exception{
+		return service.update(bookVO);
 	}
 	
 	@DeleteMapping(value = "/{id}")

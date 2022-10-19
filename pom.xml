@@ -16,6 +16,8 @@
 	<properties>
 		<java.version>19</java.version>
 		<dozer-version>6.4.0</dozer-version>
+		<testcontainers.version>1.16.3</testcontainers.version>
+		<rest-assured.version>4.5.0</rest-assured.version>
 	</properties>
 	<dependencies>
 	
@@ -76,6 +78,20 @@
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${rest-assured.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mysql</artifactId>
+			<version>${testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -100,7 +116,7 @@
 						<exclusions>
 							<exclusion>
 								<artifactId>slf4j-api</artifactId>
-								<groupId>org,slf4j</groupId>
+								<groupId>org.slf4j</groupId>
 							</exclusion>
 						</exclusions>
 					</dependency>
@@ -114,7 +130,7 @@
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
 			<snapshots>
-				<enabled>false</enabled>
+				<enabled>true</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
