@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import br.com.bruno.utils.MediaType;
 import br.com.bruno.vo.v1.PersonVO;
 import br.com.bruno.vo.v2.PersonVOV2;
 
+//@CrossOrigin
 @RestController
 @RequestMapping("/api/person/v1")
 //@Tag(name = "People", description = "Endpoints for Mapping People")
@@ -47,6 +49,7 @@ public class PersonController {
 		return service.findAll();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
 	//@Operation(summary = "Finds a Person", description = "Finds a person", 
 		//tags = {"People"},
@@ -65,6 +68,7 @@ public class PersonController {
 		return service.findById(id);
 	}
 	
+	@CrossOrigin(origins = {"http://localhost:8080", "https://erudio.com.br"})
 	@PostMapping(produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML}, consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
 	//@Operation(summary = "Add a new Person", description = "Add a new person by passing in a JSON, XML or YML representation of the person", 
 		//tags = {"People"},
